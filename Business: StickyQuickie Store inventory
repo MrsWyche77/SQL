@@ -1,0 +1,44 @@
+/* Creating a press-on nail shop Called Sticky Quickie*/
+
+CREATE TABLE inventory ( id INTEGER, item TEXT, quantity_cases INTEGER, price INTEGER, free_item TEXT);
+/*items needed to fill inventory:
+1.nail polish
+2.nail polish remover
+3.nail glue
+4.nail stickers
+5.logo cards
+6.cuticle pusher
+7.nail oil
+8.filer
+9.nail stamp
+10.cotton balls
+11.face mask
+12.instructions for nail placement
+13.gel lamp
+14.wrapping paper
+15.gift boxes*/
+
+INSERT INTO inventory VALUES (1, "Nail Polish", 5, 6.00, "No");
+INSERT INTO inventory VALUES (2, "Nail polish remover",50, 15.00,"No");
+INSERT INTO inventory VALUES (3,"Nail glue",100,5.00,"yes");
+INSERT INTO inventory VALUES (4,"Nail stickers",1000,1.00,"no");
+INSERT INTO inventory VALUES (5, "Logo cards",100,null,"no");
+INSERT INTO inventory VALUES (6, "Cuticle pusher", 500,2.00,"yes");
+INSERT INTO inventory VALUES (7,"nail oil",50,5.00,"yes");
+INSERT INTO inventory VALUES (8, "Filer", 1000, 2.00,"yes");
+INSERT INTO inventory VALUES (9, "Nail stamp",10, 25.00,"no");
+INSERT INTO inventory VALUES (10, "Cotton balls", 1000,null,"No");
+INSERT INTO inventory VALUES (11,"Face mask",50,10.00,"yes");
+INSERT INTO inventory VALUES (12, "nail install instructions",100, null,"no");
+INSERT INTO inventory VALUES (13, "Gel lamp", 50, 100.00,"Yes");
+INSERT INTO inventory VALUES (14,"Wrapping Paper", 150, null,"No");
+INSERT INTO inventory VALUES (15, "gift boxes", 150, null,"No");
+
+/*Ordering the items by the price*/
+
+SELECT * FROM inventory ORDER BY "price";
+
+/* What items are 50 and above?*/
+
+SELECT * FROM inventory WHERE "quantity_cases" >=50
+
