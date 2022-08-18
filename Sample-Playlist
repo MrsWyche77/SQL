@@ -1,0 +1,35 @@
+/* creating a playlist of random songs and how they make me feel*/
+
+Create table playlist (id INTEGER, title TEXT, artist TEXT, mood TEXT, duration_seconds INTEGER, year_released INTEGER);
+
+INSERT INTO playlist VALUES (1,"What's it gonna be", "Busta Rhymes ft. Janet Jackson", "Good", 324, 1999);
+
+INSERT INTO playlist VALUES (2, "Danger", "Erykah Badu", "EPIC", 349, 2003);
+
+INSERT INTO playlist VALUES (3, "Seen it all", "Jeezy ft. Jay Z", "EPIC", 208,2014);
+
+INSERT INTO playlist VALUES (4, "Barbie Girl", "Aqua", "nothing", 196,1997);
+
+INSERT INTO playlist VALUES (5, "I'm Blue", "Eiffel 65", "EPIC", 283,1998);
+
+INSERT INTO playlist VALUES (6, "What does the fox say?", "Ylvis", "EPIC",213,2013);
+
+INSERT INTO playlist VALUES (7, "Bad Romance", "Ladygaga", "ok", 294,2009);
+
+INSERT INTO playlist VALUES (8, "Take me on", "A-ha", "EPIC", 229,1984);
+
+INSERT INTO playlist VALUES (9, "Eye of the tiger", "Survivor", "Awesome", 244,1982);
+
+INSERT INTO playlist VALUES (10, "All the small things", "Blink 82", "Good", 168,1999);
+SELECT * FROM playlist;
+
+/* Next I will organize the songs and then find use parameters to find a specific song before the year 2000*/
+
+SELECT * FROM playlist WHERE mood = "EPIC";
+
+SELECT * FROM playlist WHERE mood = "EPIC" AND year_released < 2000;
+
+/* Sorting through the data to find the songs after the year 2000 with the song being less than 4 mintues*/
+
+SELECT * FROM playlist WHERE mood = "EPIC" AND year_released > 2000 AND duration_seconds >200;
+
