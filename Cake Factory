@@ -1,0 +1,74 @@
+/* Creating a Cake Shop-This will be so fun*/
+/*table will show types of cakes, their price and order*/
+
+CREATE TABLE cakes (id INTEGER primary key AUTOINCREMENT, order_number INTEGER , type_of_cake TEXT, price INTEGER, number_sold INTEGER);
+
+CREATE TABLE cake_inventory (id INTEGER PRIMARY KEY AUTOINCREMENT, ingredients TEXT, order_number INTEGER, branch INTEGER,ingredients_sold INTEGER);
+
+INSERT INTO cakes VALUES (1, 147258, "chocolate", 20.00, 9);
+INSERT INTO cakes VALUES (2, 123456, "strawberry", 40.00,5);
+INSERT INTO cakes VALUES (3, 931971, "pound cake", 35.00,6);
+INSERT INTO cakes VALUES (4, 362951, "carrot", 30.00,21);
+INSERT INTO cakes VALUES (5, 931971, "marble", 20.00, 30);
+INSERT INTO cakes VALUES (6, 357241, "red velvet", 35.00,8 );
+INSERT INTO cakes VALUES (7, 514879, "fruit cake", 20.00, 10);
+INSERT INTO cakes VALUES (8, 931971, "cheesecake", 40.00, 28);
+INSERT INTO cakes VALUES (9, 852963, "coconut", 20.00, 1);
+INSERT INTO cakes VALUES (10, 987654, "caramel", 35.00,15 );
+
+/* Linking both tables by the ingredients needed to make each cake*/
+
+INSERT INTO cake_inventory VALUES (1, "strawberries", 123456,1, 22);
+INSERT INTO cake_inventory VALUES (2, "caramel", 987654,3, 17);
+INSERT INTO cake_inventory VALUES (3, "cocoa", 147258,2, 14);
+INSERT INTO cake_inventory VALUES (4, "coconut flakes", 852963,1, 3);
+INSERT INTO cake_inventory VALUES (5, "red dye",357241, 2, 25);
+INSERT INTO cake_inventory VALUES (6, "carrots", 362951, 3, 3);
+INSERT INTO cake_inventory VALUES (7, "mixed fruit", 514879, 1, 1);
+INSERT INTO cake_inventory VALUES (8, "Misc", 931971, 3, 9);
+SELECT * FROM cakes;
+SELECT * FROM cake_inventory;
+
+/*I want to see how many cakes were sold as well as the maximum and minimum of cakes sold*/
+SELECT SUM(number_sold)
+FROM cakes;
+SELECT MAX(number_sold)
+FROM cakes;
+SELECT MIN(number_sold)
+FROM cakes;
+
+SELECT * FROM cakes 
+    WHERE number_sold > 10 
+ORDER BY number_sold ASC;
+
+/*Let's give the cakes a rating from GREAT to ok Using CASE AND COUNT*/
+
+SELECT COUNT(*),
+    CASE
+        WHEN number_sold > 20 THEN "GREAT"
+        WHEN number_sold > 10 THEN "GOOD"
+    ELSE "OK"
+    END AS Cakes_Rated
+    FROM cakes
+GROUP BY Cakes_Rated;
+
+/*Now I want to find which cakes had which ratings*/
+SELECT id, type_of_cake, 
+CASE
+        WHEN number_sold > 20 THEN "GREAT"
+        WHEN number_sold > 10 THEN "GOOD"
+    ELSE "OK"
+    END AS Cakes_Rated
+FROM cakes;
+
+/*Now I want to see the cakes that were rated OK and what their price is as we could change the price to get more sales*/
+
+SELECT type_of_cake ,price,
+        CASE
+            WHEN number_sold > 20 THEN "GREAT"
+            WHEN number_sold > 10 THEN "GOOD"
+        ELSE "OK"
+        END AS Cakes_Rated
+    FROM cakes
+    WHERE price <= 40 AND Cakes_Rated = "OK"
+ORDER BY price ASC;
