@@ -72,3 +72,6 @@ SELECT type_of_cake ,price,
     FROM cakes
     WHERE price <= 40 AND Cakes_Rated = "OK"
 ORDER BY price ASC;
+
+SELECT * FROM cakes
+LEFT OUTER JOIN cake_inventory;
