@@ -73,5 +73,9 @@ SELECT type_of_cake ,price,
     WHERE price <= 40 AND Cakes_Rated = "OK"
 ORDER BY price ASC;
 
-SELECT * FROM cakes
-LEFT OUTER JOIN cake_inventory;
+/*Joining Two tables by Order Number*/
+
+SELECT cakes.id, cakes.order_number, cakes.price,cake_inventory.branch, cake_inventory.ingredients
+    FROM cakes
+    JOIN cake_inventory
+    ON cakes.order_number = cake_inventory.order_number;
